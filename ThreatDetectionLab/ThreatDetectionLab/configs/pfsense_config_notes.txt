@@ -1,0 +1,3 @@
+# Pfsense Config Notes.Txt
+
+This is a placeholder.
