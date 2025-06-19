@@ -112,12 +112,3 @@ Logs collected from:
 - Build a foundational SOC lab for continued blue team learning
 
 ---
-
-## 📂 Repository Structure
-blue-team-lab/
-├── configs/ # pfSense, Splunk, Security Onion configs
-├── scripts/ # Attack and automation scripts
-├── dashboards/ # Pre-built Splunk dashboards and queries
-├── docs/ # Setup instructions, diagrams, SOPs
-└── README.md
-
