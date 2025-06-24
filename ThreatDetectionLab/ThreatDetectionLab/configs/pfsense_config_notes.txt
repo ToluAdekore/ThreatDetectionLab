@@ -111,11 +111,4 @@ VPN Access
 
 Integration with Security Onion & Splunk
 
-📁 Image Notes
-Ensure the following screenshots are in your repo under an /images folder:
 
-pfsense_disk_setup.png → Disk setup screen
-
-pfsense_vm_hardware.png → VMware hardware configuration
-
-opt_interfaces_example.png → OPT interfaces example table (optional)
