@@ -1,59 +1,57 @@
-pfSense Firewall Configuration - Homelab Setup
-This guide walks through configuring pfSense as a firewall to segment your private homelab network. Access will be restricted to the Kali Linux machine.
+🛡️ pfSense Firewall Configuration - Homelab Setup
+This guide walks you through configuring pfSense as a firewall to segment your private homelab network. Access to pfSense will be restricted to your Kali Linux machine.
 
-1. Download pfSense
+📥 1. Download pfSense
 Download the pfSense Community Edition ISO from:
 https://www.pfsense.org/download/
 
-2. Create pfSense VM (VMware Workstation)
-Click "Create a New Virtual Machine".
+🖥️ 2. Create the pfSense VM (VMware Workstation)
+Steps:
+Click Create a New Virtual Machine.
 
 Select Typical (recommended) → Next.
 
-Click Browse, locate the pfSense ISO → Next.
+Click Browse, locate your pfSense ISO → Next.
 
 Name the VM:
 pfsense → Next.
 
-Allocate 20GB disk space.
-Ensure "Split virtual disk into multiple files" is selected.
+Allocate 20GB of disk space.
+✅ Select Split virtual disk into multiple files.
 
 
 Click Customize Hardware:
 
 Set Memory to 2GB.
 
-Add 5 Network Adapters, assigned to the following VMnet interfaces:
+Add 5 Network Adapters, assigned as shown:
 
 Interface	Purpose	VMware Network
-em0	WAN (internet access)	VMnet0 (Bridged)
+em0	WAN (Internet access)	VMnet0 (Bridged)
 em1	LAN (pfSense WebGUI access)	VMnet1
 em2	OPT1 - Internal segment 1	VMnet2
 em3	OPT2 - Internal segment 2	VMnet3
 em4	OPT3 - SPAN port for Security Onion	VMnet4
-em5	OPT4 - Reserved/Future use	VMnet5
+em5	OPT4 - Reserved for future use	VMnet5
 
-Example of correct hardware setup:
+Example of Correct Hardware Setup:
 
-
-3. pfSense Installation & Initial Setup
+⚙️ 3. pfSense Installation & Initial Setup
 Power on the pfSense VM.
 
 Accept all default installation prompts.
 
-The system will auto-configure and reboot.
+pfSense will auto-configure and reboot.
 
-4. pfSense Console Configuration
-At the pfSense console:
+🖧 4. pfSense Console Configuration
+Interface Assignment:
+Select option 1 to assign interfaces.
 
-Interface Assignment
-Select option 1 (Assign Interfaces).
-
-When asked:
+When prompted:
 
 Setup VLANs? → n
 
-Assign interfaces:
+Assign interfaces as follows:
 
 em0 → WAN
 
@@ -69,8 +67,8 @@ em5 → OPT4
 
 Confirm: y
 
-LAN IP Configuration
-Select option 2 (Set interface IPs).
+LAN IP Configuration:
+Select option 2 to set interface IPs.
 
 Configure LAN (em1):
 
@@ -80,36 +78,44 @@ Subnet Mask: /24 (255.255.255.0)
 
 No upstream gateway
 
-OPT Interfaces Configuration
+OPT Interfaces:
 Interface	IP Address	Notes
-OPT1	192.168.10.1/24	Internal segment 1
-OPT2	192.168.20.1/24	Internal segment 2
+OPT1	Your IP Choice	Internal segment 1
+OPT2	Your IP Choice	Internal segment 2
 OPT3	No IP Assigned	SPAN port for Security Onion
-OPT4	192.168.30.1/24	Reserved for future use
+OPT4	Your IP Choice	Reserved for future use
 
-5. WebConfigurator Access
-On your Kali Linux machine, open a web browser.
-
-Navigate to:
+🌐 5. WebConfigurator Access
+From your Kali Linux machine, open a browser and go to:
 https://192.168.1.1
 
-Default login credentials:
+Default Login:
 
 Username: admin
 
 Password: pfsense
 
-All further configuration will be done through the WebGUI.
+⚠️ You may need to accept a security certificate warning.
 
-End of pfSense Initial Configuration
+✅ Setup Complete
+Further configuration will be handled through the pfSense WebGUI.
 
-Optional: Future Steps to Document
+🔧 Optional Future Steps (To Document Later)
 Firewall Rules
 
 NAT Configuration
 
-VLAN Setup (if applicable)
+VLAN Setup
 
 VPN Access
 
-Security Onion & Splunk Integration
+Integration with Security Onion & Splunk
+
+📁 Image Notes
+Ensure the following screenshots are in your repo under an /images folder:
+
+pfsense_disk_setup.png → Disk setup screen
+
+pfsense_vm_hardware.png → VMware hardware configuration
+
+opt_interfaces_example.png → OPT interfaces example table (optional)
