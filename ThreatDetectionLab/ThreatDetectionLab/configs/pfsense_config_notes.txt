@@ -1,3 +1,115 @@
-# Pfsense Config Notes.Txt
+pfSense Firewall Configuration - Homelab Setup
+This guide walks through configuring pfSense as a firewall to segment your private homelab network. Access will be restricted to the Kali Linux machine.
 
-This is a placeholder.
+1. Download pfSense
+Download the pfSense Community Edition ISO from:
+https://www.pfsense.org/download/
+
+2. Create pfSense VM (VMware Workstation)
+Click "Create a New Virtual Machine".
+
+Select Typical (recommended) → Next.
+
+Click Browse, locate the pfSense ISO → Next.
+
+Name the VM:
+pfsense → Next.
+
+Allocate 20GB disk space.
+Ensure "Split virtual disk into multiple files" is selected.
+
+
+Click Customize Hardware:
+
+Set Memory to 2GB.
+
+Add 5 Network Adapters, assigned to the following VMnet interfaces:
+
+Interface	Purpose	VMware Network
+em0	WAN (internet access)	VMnet0 (Bridged)
+em1	LAN (pfSense WebGUI access)	VMnet1
+em2	OPT1 - Internal segment 1	VMnet2
+em3	OPT2 - Internal segment 2	VMnet3
+em4	OPT3 - SPAN port for Security Onion	VMnet4
+em5	OPT4 - Reserved/Future use	VMnet5
+
+Example of correct hardware setup:
+
+
+3. pfSense Installation & Initial Setup
+Power on the pfSense VM.
+
+Accept all default installation prompts.
+
+The system will auto-configure and reboot.
+
+4. pfSense Console Configuration
+At the pfSense console:
+
+Interface Assignment
+Select option 1 (Assign Interfaces).
+
+When asked:
+
+Setup VLANs? → n
+
+Assign interfaces:
+
+em0 → WAN
+
+em1 → LAN
+
+em2 → OPT1
+
+em3 → OPT2
+
+em4 → OPT3
+
+em5 → OPT4
+
+Confirm: y
+
+LAN IP Configuration
+Select option 2 (Set interface IPs).
+
+Configure LAN (em1):
+
+IP Address: 192.168.1.1
+
+Subnet Mask: /24 (255.255.255.0)
+
+No upstream gateway
+
+OPT Interfaces Configuration
+Interface	IP Address	Notes
+OPT1	192.168.10.1/24	Internal segment 1
+OPT2	192.168.20.1/24	Internal segment 2
+OPT3	No IP Assigned	SPAN port for Security Onion
+OPT4	192.168.30.1/24	Reserved for future use
+
+5. WebConfigurator Access
+On your Kali Linux machine, open a web browser.
+
+Navigate to:
+https://192.168.1.1
+
+Default login credentials:
+
+Username: admin
+
+Password: pfsense
+
+All further configuration will be done through the WebGUI.
+
+End of pfSense Initial Configuration
+
+Optional: Future Steps to Document
+Firewall Rules
+
+NAT Configuration
+
+VLAN Setup (if applicable)
+
+VPN Access
+
+Security Onion & Splunk Integration
