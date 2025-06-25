@@ -1,4 +1,4 @@
-# 🛡️ ThreatDetectionLab- Full SOC Topology
+# 🛡️ ThreatDetectionLab - Full Topology
 
 This repository documents the setup and configuration of a **Blue Team Home SOC Lab** built in **VMware** using **pfSense**, **Security Onion**, **Splunk**, and vulnerable machines (e.g., Metasploitable, DVWA, Ubuntu, etc.).
 
