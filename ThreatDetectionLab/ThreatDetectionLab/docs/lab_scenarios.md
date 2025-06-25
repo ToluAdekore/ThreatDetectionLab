@@ -1,4 +1,4 @@
-#🧪 Lab Scenarios - SMOC SOC Lab
+# 🧪 Lab Scenarios - SMOC SOC Lab
 This document outlines progressively more complex security scenarios designed for detection and monitoring validation within the homelab. Scenarios move from basic to advanced to simulate real-world attacker behavior.
 
 🔰 Level 1 - Basic Visibility Checks
