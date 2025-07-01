@@ -1,7 +1,5 @@
 # 🖥️ SOC Lab Network Diagram Notes
 
-This document provides details and technical notes for the lab network topology used for attack simulation, monitoring, and detection within the VMware-based SOC lab environment.
-
 ---
 
 # 📡 1. Network Segments & IP Ranges
