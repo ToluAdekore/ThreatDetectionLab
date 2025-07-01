@@ -4,7 +4,7 @@ This document provides details and technical notes for the lab network topology 
 
 ---
 
-## 📡 1. Network Segments & IP Ranges
+# 📡 1. Network Segments & IP Ranges
 
 | **Network**           | **VMware Network** | **Subnet**         | **Purpose**                               |
 |-----------------------|--------------------|--------------------|-------------------------------------------|
@@ -16,7 +16,7 @@ This document provides details and technical notes for the lab network topology 
 
 ---
 
-## 🖥️ 2. Devices & IP Assignments
+# 🖥️ 2. Devices & IP Assignments
 
 | **Device**              | **Interface** | **IP Address**     | **Notes**                                   |
 |-------------------------|---------------|--------------------|---------------------------------------------|
@@ -31,7 +31,7 @@ This document provides details and technical notes for the lab network topology 
 
 ---
 
-## 🛡️ 3. Network Behavior Overview
+# 🛡️ 3. Network Behavior Overview
 
 ✅ Kali machine simulates attacker activity targeting Victim Network.  
 ✅ pfSense controls traffic flow between networks.  
@@ -41,7 +41,7 @@ This document provides details and technical notes for the lab network topology 
 
 ---
 
-## ⚒️ 4. Lab Notes & Recommendations
+# ⚒️ 4. Lab Notes & Recommendations
 
 - All networks are **isolated within VMware** for safety.  
 - SPAN/mirror port simulation depends on VMware or pfSense bridging configuration.  
