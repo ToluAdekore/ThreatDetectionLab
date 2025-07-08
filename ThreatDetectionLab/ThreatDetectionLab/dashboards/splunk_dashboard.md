@@ -19,8 +19,6 @@ A centralized Splunk dashboard built to monitor key host-specific activity in a 
 
 ---
 
----
-
 ### 🧾 Importing the Dashboard
 
 1. Go to **Settings → User Interface → Views → Add New**
