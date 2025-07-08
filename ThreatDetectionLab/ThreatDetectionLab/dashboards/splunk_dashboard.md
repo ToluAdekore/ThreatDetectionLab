@@ -23,7 +23,7 @@ A centralized Splunk dashboard built to monitor key host-specific activity in a 
 
 | 🧭 Overview | 🔍 Detail View |
 |------------|----------------|
-| ![Dashboard Overview](./dashboards/Screenshot%202025-07-08%20111933.png) | ![Process + Permission Panels](./dashboards/Screenshot%202025-07-08%20111933.png) |
+| ![Dashboard Overview](./dashboards/Recent%20Logon%20Activity%20+%20Failed%20Logon%20Reasons.png) | ![Process + Permission Panels](./dashboards/Screenshot%202025-07-08%20111933.png) |
 
 ---
 
