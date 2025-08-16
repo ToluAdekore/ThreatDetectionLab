@@ -14,11 +14,12 @@ This document outlines progressively complex security scenarios designed to vali
   - Event ID `4624 - Successful Logon` appears in Splunk.
   - **Relevant Fields:** `Account_Name`, `Computer_Name`, `Source_IP`.
 
-✅ Scenario 3: Common Process Execution
-- **Action:** Run `notepad.exe` or `calc.exe` on workstation.
-- **Expected Result:**
-  - Security Event ID **4688** – Process Creation logged (requires Audit Process Creation + command-line logging enabled).
-  - **Relevant Fields:** `NewProcessName`, `CommandLine`, `WorkstationName`.
+## ✅ Scenario 3: Common Process Execution
+
+**Action:** Run `notepad.exe` on the workstation.  
+**Expected Result:**  
+- **Sysmon Event ID 1 – Process Create** logged.  
+- **Relevant Fields:** `Image`, `CommandLine`, `Computer` (host), `ParentImage`.
 
 ---
 
@@ -26,24 +27,24 @@ This document outlines progressively complex security scenarios designed to vali
 
 **Objective:** Simulate suspicious but not overtly malicious activity to validate detection and alerting.
 
-✅ Scenario 4: PowerShell Execution
-- **Action:** Run PowerShell command: `Get-Process`.
-- **Expected Result:**
-  - Security Event ID **4688** – `powershell.exe` process creation.
-  - PowerShell/Operational Event ID **4104** – Script Block Logging captures full command.
-  - Command line arguments visible in Splunk.
+### ✅ Scenario 4: PowerShell Execution
+**Action:** Run PowerShell command: `Get-Process`.  
+**Expected Result:**  
+- **Sysmon Event ID 1 – Process Create** for `powershell.exe` (or `pwsh.exe`).  
+- *(Optional)* Windows **PowerShell/Operational Event ID 4104** if Script Block Logging is enabled.  
+- Command line arguments visible in Splunk.
 
-✅ Scenario 5: Suspicious File Drop
-- **Action:** Place a `.exe` file in `C:\Users\Public`.
-- **Expected Result:**
-  - Security Event ID **4663** – File creation/open logged (requires Audit Object Access enabled on the target folder).
-  - Potential detection via Splunk file monitoring.
+### ✅ Scenario 5: Suspicious File Drop
+**Action:** Place a `.exe` file in `C:\Users\Public`.  
+**Expected Result:**  
+- **Sysmon Event ID 11 – File Create** detects the drop.  
+- Potential detection via Splunk file monitoring of that path.
 
-✅ Scenario 6: Outbound Network Connection
-- **Action:** Run: `Test-NetConnection example.com -Port 80`.
-- **Expected Result:**
-  - Outbound connection logged via Windows Firewall logs (requires connection logging enabled).
-  - Suricata may detect traffic leaving monitored network.
+### ✅ Scenario 6: Outbound Network Connection
+**Action:** Run:  
+```powershell
+Test-NetConnection example.com -Port 80
+
 
 ---
 
