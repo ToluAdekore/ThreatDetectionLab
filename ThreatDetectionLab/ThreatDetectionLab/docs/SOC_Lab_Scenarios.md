@@ -93,23 +93,7 @@ This document outlines progressively complex security scenarios designed to vali
 
 ---
 
-### ✅ Scenario 6: Mimikatz Execution
-
-- **Action:** Run Mimikatz (or a decoy binary) on the workstation.
-- **Expected Result:**
-  - **Sysmon Event ID 1 - Process Create** for `mimikatz.exe` or decoy binary.
-  - **Relevant Fields:**
-    - `Image`: Path to the binary.
-    - `CommandLine`: Arguments used.
-    - `ParentImage`: Parent process (e.g., `cmd.exe`).
-    - `Computer`: Hostname.
-  - Windows **Security Event ID 4688 - Process Creation** captures suspicious process execution.
-  - Possible AV/Defender alerts triggered (e.g., Microsoft Defender logs).
-  - Alerts in Splunk and Security Onion if detection rules are active for malicious process names or behaviors.
-
----
-
-### ✅ Scenario 7: RDP Lateral Movement
+### ✅ Scenario 6: RDP Lateral Movement
 
 - **Action:** RDP from a Kali machine into a domain-joined host.
 - **Expected Result:**
@@ -123,7 +107,7 @@ This document outlines progressively complex security scenarios designed to vali
 
 ---
 
-### ✅ Scenario 8: Reverse Shell
+### ✅ Scenario 7: Reverse Shell
 
 - **Action:**
   - Start a listener on the Kali machine (e.g., `nc -lvnp 4444`).
@@ -141,7 +125,7 @@ This document outlines progressively complex security scenarios designed to vali
 
 ---
 
-### ✅ Scenario 9: Privilege Escalation - Admin Group Modification
+### ✅ Scenario 8: Privilege Escalation - Admin Group Modification
 
 - **Action:** Add a user to the local Administrators group (e.g., `net localgroup Administrators user /add`).
 - **Expected Result:**
@@ -155,7 +139,7 @@ This document outlines progressively complex security scenarios designed to vali
 
 ---
 
-### ✅ Scenario 10: Malicious Scheduled Task
+### ✅ Scenario 9: Malicious Scheduled Task
 
 - **Action:** Create a scheduled task with a suspicious payload (e.g., `schtasks /create /sc onlogon /tn EvilTask /tr "C:\Users\Public\suspicious.exe"`).
 - **Expected Result:**
