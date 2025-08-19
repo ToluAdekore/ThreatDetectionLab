@@ -25,3 +25,7 @@
 index=sysmon source="WinEventLog:Microsoft-Windows-Sysmon/Operational" EventID 3389
 | xmlkv
 | search EventID=3
+
+index="wineventloguser" source="WinEventLog:Security" EventCode=4624 Logon_Type=10
+| xmlkv
+| search EventCode=4624
