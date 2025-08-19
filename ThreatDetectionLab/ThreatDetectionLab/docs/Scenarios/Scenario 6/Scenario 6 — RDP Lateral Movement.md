@@ -1,4 +1,4 @@
-# ✅ Scenario 7 — RDP Lateral Movement
+# ✅ Scenario 6 — RDP Lateral Movement
 
 **Goal:** Demonstrate that connecting via RDP from a Kali machine to a domain-joined Windows host generates **Windows Security Event ID 4624 (Logon Success, LogonType 10 — Remote Interactive)** and **Sysmon Event ID 3 (Network Connection to port 3389)**, both searchable in Splunk.
 
